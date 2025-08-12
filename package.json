@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@number-flow/react": "^0.5.10",
     "@radix-ui/react-slot": "^1.2.3",
     "@types/canvas-confetti": "^1.9.0",
     "canvas-confetti": "^1.9.3",
