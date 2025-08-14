@@ -10,10 +10,12 @@ import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Flower } from "lucide-react";
 import Countdown from "./Countdown";
+import Curtain from "../Curtain";
 
 export default function Hero() {
   const [countdownFinished, setCountdownFinished] = useState(false);
   const hasMounted = useRef(false);
+  const textDelay = 3;
 
   // image cursor tails images
   const images = [
@@ -30,7 +32,7 @@ export default function Hero() {
 
   // confetti
   const displayConfetti = () => {
-    const end = Date.now() + 3 * 1000; // 3 seconds
+    const end = Date.now() + 8 * 1000; // 8 seconds
     const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
 
     const frame = () => {
@@ -72,61 +74,63 @@ export default function Hero() {
       {countdownFinished || (
         <Countdown setCountdownFinished={setCountdownFinished} />
       )}
+      <Curtain />
       {countdownFinished && (
-        <div className="cursor-none">
-          {/* Smooth Cursor */}
-          <SmoothCursor />
-          <ImageCursorTrail
-            items={images}
-            maxNumberOfImages={7}
-            distance={30}
-            imgClass="sm:w-28 w-28 h-auto"
-            className="w-full min-h-screen"
-          >
-            <article className="relative z-50 flex flex-col items-center justify-center ">
-              {/* tagline */}
-              <motion.h1
-                initial={{ y: 100, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                className="font-pacifico text-7xl font-medium text-base-content flex items-center gap-1"
-              >
-                Happy Birthday, <SparklesText> Rapunzel! </SparklesText>
-              </motion.h1>
-              {/* description */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                className="font-quicksand mt-10 text-lg font-normal"
-              >
-                {/* typing animation */}
-                <TypingAnimation className="text-lg font-normal" duration={40}>
-                  You make the world brighter just by being in it. This is your
-                  special little place.
-                </TypingAnimation>
-              </motion.p>
-              {/* button */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: [0, 1.4, 1] }}
-                transition={{ delay: 4, duration: 0.3 }}
-                className="mt-12 hover:scale-[1.1] transition-all duration-300"
-              >
-                <ShimmerButton
-                  shimmerColor="white"
-                  shimmerSize="0.1rem"
-                  shimmerDuration="3s"
-                  background="#ff6f91"
+        <div>
+          <div className="cursor-none">
+            {/* Smooth Cursor */}
+            <SmoothCursor />
+            <ImageCursorTrail
+              items={images}
+              maxNumberOfImages={7}
+              distance={30}
+              imgClass="sm:w-28 w-28 h-auto"
+              className="w-full min-h-screen"
+            >
+              <article className="relative z-50 flex flex-col items-center justify-center ">
+                {/* tagline */}
+                <motion.h1
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: textDelay }}
+                  className="font-pacifico text-7xl font-medium text-base-content flex items-center gap-1"
                 >
-                  <span className="flex gap-1 items-center">
-                    Start Your Birthday Journey{" "}
-                    <Flower className="w-5 h-5 animate-spin" />
-                  </span>
-                </ShimmerButton>
-              </motion.div>
-            </article>
-          </ImageCursorTrail>
+                  Happy Birthday, <SparklesText> Rapunzel! </SparklesText>
+                </motion.h1>
+                {/* description */}
+                <p className="font-quicksand mt-10 text-lg font-normal max-w-2xl">
+                  {/* typing animation */}
+                  <TypingAnimation
+                    className="text-lg font-normal"
+                    duration={40}
+                    delay={textDelay * 1000}
+                  >
+                    You make the world brighter just by being in it. This is
+                    your special little place.
+                  </TypingAnimation>
+                </p>
+                {/* button */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: [0, 1.4, 1] }}
+                  transition={{ delay: 7, duration: 0.3 }}
+                  className="mt-12 hover:scale-[1.1] transition-all duration-300"
+                >
+                  <ShimmerButton
+                    shimmerColor="white"
+                    shimmerSize="0.1rem"
+                    shimmerDuration="3s"
+                    background="#ff6f91"
+                  >
+                    <span className="flex gap-1 items-center">
+                      Start Your Birthday Journey{" "}
+                      <Flower className="w-5 h-5 animate-spin" />
+                    </span>
+                  </ShimmerButton>
+                </motion.div>
+              </article>
+            </ImageCursorTrail>
+          </div>
         </div>
       )}
     </>
