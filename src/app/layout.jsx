@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${greatVibes.variable} ${quicksand.variable} ${pacifico.variable} antialiased bg-base-100 text-base-content-secondary`}
+        className={`${greatVibes.variable} ${quicksand.variable} ${pacifico.variable} antialiased  text-base-content-secondary`}
       >
         {children}
       </body>

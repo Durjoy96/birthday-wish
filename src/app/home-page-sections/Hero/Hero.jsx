@@ -10,7 +10,7 @@ import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Flower } from "lucide-react";
 import Countdown from "./Countdown";
-import Curtain from "../Curtain";
+import Curtain from "./Curtain";
 
 export default function Hero() {
   const [countdownFinished, setCountdownFinished] = useState(false);
