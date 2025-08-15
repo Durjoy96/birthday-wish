@@ -13,8 +13,8 @@ export default function Curtain() {
         <div className="flex overflow-hidden absolute top-0 bottom-0 left-0 right-0 z-[999]">
           {" "}
           <motion.div
-            initial={{ x: -1000 }}
-            animate={{ x: [-1000, 0, -1000] }}
+            initial={{ x: "-100vw" }}
+            animate={{ x: ["-100vw", 0, "-100vw"] }}
             transition={{
               duration: 8,
               delay: delay,
@@ -25,8 +25,8 @@ export default function Curtain() {
             style={{ backgroundImage: `url(${curtainImg.src})` }}
           ></motion.div>
           <motion.div
-            initial={{ x: 1000 }}
-            animate={{ x: [1000, 0, 1000] }}
+            initial={{ x: "100vw" }}
+            animate={{ x: ["100vw", 0, "100vw"] }}
             transition={{
               duration: 8,
               delay: delay,

@@ -11,6 +11,8 @@ import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { Flower } from "lucide-react";
 import Countdown from "./Countdown";
 import Curtain from "./Curtain";
+import FlyingCatAnimation from "@/assets/json/flying-cat.json";
+import Lottie from "lottie-react";
 
 export default function Hero() {
   const [countdownFinished, setCountdownFinished] = useState(false);
@@ -87,12 +89,25 @@ export default function Hero() {
               imgClass="sm:w-28 w-28 h-auto"
               className="w-full min-h-screen"
             >
-              <article className="relative z-50 flex flex-col items-center justify-center ">
+              <article className="relative z-50 flex flex-col items-center justify-center">
+                {/* flying cat */}
+                <motion.div
+                  initial={{ y: "100vh" }}
+                  animate={{ y: "-100vh" }}
+                  transition={{ duration: 10 }}
+                  className="w-full h-72 absolute z-10"
+                >
+                  <Lottie
+                    className="w-full h-full absolute"
+                    animationData={FlyingCatAnimation}
+                    loop={true}
+                  />
+                </motion.div>
                 {/* tagline */}
                 <motion.h1
-                  initial={{ y: 100, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: textDelay }}
+                  initial={{ y: "100vh", opacity: 0 }}
+                  animate={{ y: "0vh", opacity: 1 }}
+                  transition={{ duration: 5, delay: 1 }}
                   className="font-pacifico text-7xl font-medium text-base-content flex items-center gap-1"
                 >
                   Happy Birthday, <SparklesText> Rapunzel! </SparklesText>
@@ -103,7 +118,7 @@ export default function Hero() {
                   <TypingAnimation
                     className="text-lg font-normal"
                     duration={40}
-                    delay={textDelay * 1000}
+                    delay={5 * 1000}
                   >
                     You make the world brighter just by being in it. This is
                     your special little place.
@@ -113,7 +128,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: [0, 1.4, 1] }}
-                  transition={{ delay: 7, duration: 0.3 }}
+                  transition={{ delay: 9, duration: 0.3 }}
                   className="mt-12 hover:scale-[1.1] transition-all duration-300"
                 >
                   <ShimmerButton
