@@ -16,8 +16,8 @@ import Lottie from "lottie-react";
 
 export default function Hero() {
   const [countdownFinished, setCountdownFinished] = useState(false);
+  const [displayJourney, setDisplayJourney] = useState(false);
   const hasMounted = useRef(false);
-  const textDelay = 3;
 
   // image cursor tails images
   const images = [
@@ -77,7 +77,7 @@ export default function Hero() {
         <Countdown setCountdownFinished={setCountdownFinished} />
       )}
       <Curtain />
-      {countdownFinished && (
+      {countdownFinished && !displayJourney && (
         <div>
           <div className="cursor-none">
             {/* Smooth Cursor */}
@@ -107,7 +107,7 @@ export default function Hero() {
                 <motion.h1
                   initial={{ y: "100vh", opacity: 0 }}
                   animate={{ y: "0vh", opacity: 1 }}
-                  transition={{ duration: 5, delay: 1 }}
+                  transition={{ duration: 5, delay: 0.8 }}
                   className="font-pacifico text-7xl font-medium text-base-content flex items-center gap-1"
                 >
                   Happy Birthday, <SparklesText> Rapunzel! </SparklesText>
@@ -130,6 +130,7 @@ export default function Hero() {
                   whileInView={{ opacity: 1, scale: [0, 1.4, 1] }}
                   transition={{ delay: 9, duration: 0.3 }}
                   className="mt-12 hover:scale-[1.1] transition-all duration-300"
+                  onClick={() => setDisplayJourney(true)}
                 >
                   <ShimmerButton
                     shimmerColor="white"
