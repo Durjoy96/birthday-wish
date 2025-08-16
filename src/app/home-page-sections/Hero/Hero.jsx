@@ -13,6 +13,7 @@ import Countdown from "./Countdown";
 import Curtain from "./Curtain";
 import FlyingCatAnimation from "@/assets/json/flying-cat.json";
 import Lottie from "lottie-react";
+import ScratchToReveal from "../scratch-to-reveal";
 
 export default function Hero() {
   const [countdownFinished, setCountdownFinished] = useState(false);
@@ -149,6 +150,7 @@ export default function Hero() {
           </div>
         </div>
       )}
+      {displayJourney && <ScratchToReveal />}
     </>
   );
 }
